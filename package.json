@@ -1,0 +1,14 @@
+{
+  "name": "docker-brackets",
+  "description": "Brackets on Docker",
+  "scripts": {
+    "start": "npm install && node server.js"
+  },
+  "dependencies": {
+    "path": "^0",
+    "http": "^0",
+    "express": "^4.13.4",
+    "brackets": "^0"
+  }
+}
+
