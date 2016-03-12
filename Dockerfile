@@ -1,16 +1,15 @@
 FROM tatsushid/tinycore:6.4-x86
-
-# Instructions are run with 'tc' user
-
-RUN tce-load -wic gnupg curl \
-    && rm -rf /tmp/tce/optional/*
-
 ENV CORE x86 
 ENV NODE_VERSION 0.12.7
 ENV NPM_VERSION 2.14.1
 
+RUN tce-load -wic gnupg curl \
+    && rm -rf /tmp/tce/optional/*
+
 RUN tce-load -wic coreutils \
         binutils \
+        git \
+        openssh \
         file \
     && cd /tmp \
     && curl -SLO "http://nodejs.org/dist/v$NODE_VERSION/node-v${NODE_VERSION}-linux-${CORE}.tar.gz" \
@@ -42,18 +41,4 @@ RUN tce-load -wic coreutils \
     && rm -rf /tmp/tce/optional/* \
     && sudo npm install -g npm@"$NPM_VERSION" \
     && sudo npm cache clear
-
-# Instructions after here are run with 'root' user
 USER root
-
-#CMD make
-
-#RUN mkdir -p /usr/src/app
-#WORKDIR /usr/src/app
-
-#ONBUILD COPY package.json /usr/src/app/
-#ONBUILD RUN npm install
-#ONBUILD COPY . /usr/src/app
-
-CMD [ "npm", "start" ]
-

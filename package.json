@@ -1,14 +1,29 @@
 {
   "name": "docker-brackets",
   "description": "Brackets on Docker",
-  "scripts": {
-    "start": "npm install && node server.js"
-  },
   "dependencies": {
-    "path": "^0",
-    "http": "^0",
     "express": "^4.13.4",
-    "brackets": "^0"
-  }
+    "brackets":""
+  },
+  "version": "0.0.1",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iegik/docker-brackets.git"
+  },
+  "author": "arturs@jansons.net",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/iegik/docker-brackets/issues"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "docker",
+    "brackets",
+    "ide",
+    "server"
+  ]
 }
-

@@ -1,0 +1,4 @@
+.brackets/
+!.brackets/brackets.json
+node_modules/
+*.log

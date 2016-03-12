@@ -1,21 +1,30 @@
-var path = require("path"),
-    http = require("http"),
-    express = require("express"),
-    brackets = require("brackets"),
+'use strict';
+var path = require('path'),
+    http = require('http'),
+    express = require('express'),
+    brackets = require('brackets'),
     app = express(),
-    server = http.createServer(app);
+    server = http.createServer(app),
+    bracketsOpts = {
+        port: 3000,
+        httpRoot: '/brackets',
+        projectsDir: path.join(__dirname, '../', '/projects'),
+        supportDir: path.join(__dirname, '.', '/.brackets'),
+        allowUserDomains: true
+    };
 
-app.get("/", function (req, res) {
-    res.send("Hello World");
-});
+(function() {
+    var childProcess = require("child_process");
+    var oldSpawn = childProcess.spawn;
+    function mySpawn() {
+        arguments[2] = {cwd:'/usr/src/app'};
+        //console.log('cwd', arguments[2].cwd);
+        var result = oldSpawn.apply(null, arguments);
+        return result;
+    }
+    childProcess.spawn = mySpawn;
+})();
 
-var bracketsOpts = {
-    projectsDir: path.join(__dirname, "../", "/projects"),
-    supportDir: path.join(__dirname, ".", "/.brackets")
-};
 brackets(server, bracketsOpts);
-
-server.listen(3000);
-
-console.log("Your application is availble at http://localhost:3000");
-console.log("You can access Brackets on http://localhost:3000/brackets/");
+server.listen(bracketsOpts.port);
+console.log('You can access Brackets on http://localhost:' + bracketsOpts.port + bracketsOpts.httpRoot);
