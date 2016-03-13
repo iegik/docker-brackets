@@ -5,7 +5,8 @@ NODE_MODULES_DIR = node_modules
     DOCKER_NPM = docker run -it --rm \
         -p 3000:3000 \
         -v "$(CURDIR)":/usr/src/app \
-        -v "$$HOME/Development/":/usr/src/projects \
+        -v "$$HOME/Development":/usr/src/projects \
+        -v "$$HOME/.ssh":/root/.ssh \
         -w /usr/src/app \
         --name $(NAME) \
         docker-tinycore-node

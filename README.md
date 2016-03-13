@@ -1,6 +1,7 @@
 # Brackets on Docker
 
-Fully configured Brackets for docker
+Fully configured Brackets for Docker, where `~/Development` - is projects root directory.
+
 
 ```bash
 make help
