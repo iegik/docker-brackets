@@ -10,3 +10,6 @@
 [submodule ".brackets/extensions/user/interactive-linter"]
 	path = .brackets/extensions/user/interactive-linter
 	url = git@github.com:MiguelCastillo/Brackets-InteractiveLinter.git
+[submodule ".brackets/extensions/user/gruehle.exclude-folders"]
+	path = .brackets/extensions/user/gruehle.exclude-folders
+	url = git@github.com:gruehle/exclude-folders.git
