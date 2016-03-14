@@ -1,3 +1,6 @@
 [submodule ".brackets/extensions/user/zaggino.brackets-git"]
 	path = .brackets/extensions/user/zaggino.brackets-git
 	url = git@github.com:zaggino/brackets-git.git
+[submodule ".brackets/extensions/user/brackets-beautify"]
+	path = .brackets/extensions/user/brackets-beautify
+	url = git@github.com:brackets-beautify/brackets-beautify.git
