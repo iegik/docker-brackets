@@ -7,3 +7,6 @@
 [submodule ".brackets/extensions/user/funcdocr"]
 	path = .brackets/extensions/user/funcdocr
 	url = git@github.com:Wikunia/brackets-FuncDocr.git
+[submodule ".brackets/extensions/user/interactive-linter"]
+	path = .brackets/extensions/user/interactive-linter
+	url = git@github.com:MiguelCastillo/Brackets-InteractiveLinter.git
