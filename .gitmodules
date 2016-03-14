@@ -4,3 +4,6 @@
 [submodule ".brackets/extensions/user/brackets-beautify"]
 	path = .brackets/extensions/user/brackets-beautify
 	url = git@github.com:brackets-beautify/brackets-beautify.git
+[submodule ".brackets/extensions/user/funcdocr"]
+	path = .brackets/extensions/user/funcdocr
+	url = git@github.com:Wikunia/brackets-FuncDocr.git
