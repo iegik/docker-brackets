@@ -1,0 +1,3 @@
+[submodule ".brackets/extensions/user/zaggino.brackets-git"]
+	path = .brackets/extensions/user/zaggino.brackets-git
+	url = git@github.com:zaggino/brackets-git.git
