@@ -3,6 +3,8 @@ var path = require('path'),
     http = require('http'),
     express = require('express'),
     brackets = require('brackets'),
+    fs = require('fs'),
+    state = require('./.brackets/state.json'),
     app = express(),
     server = http.createServer(app),
     bracketsOpts = {
@@ -14,11 +16,15 @@ var path = require('path'),
     };
 
 (function() {
-    var childProcess = require("child_process");
-    var oldSpawn = childProcess.spawn;
+    var childProcess = require("child_process"),
+        oldSpawn = childProcess.spawn;
     function mySpawn() {
-        arguments[2] = {cwd:'/usr/src/app'};
-        //console.log('cwd', arguments[2].cwd);
+        fs.readFile('./.brackets/state.json', 'utf8', function (err, data) {
+            if (err) throw err;
+            state = JSON.parse(data);
+        });
+        arguments[2] = {cwd:path.join(__dirname, '../', state.projectPath)};
+        console.log('cwd', arguments[2].cwd);
         var result = oldSpawn.apply(null, arguments);
         return result;
     }
