@@ -26,8 +26,6 @@ $(NODE_MODULES_DIR): package.json
 		$(SH)"npm install --unsafe-perm"
 
 dep: $(NODE_MODULES_DIR)
-	@git submodule init
-	@git submodule update
 
 build: dep
 	@$(DOCKER_NPM) \
