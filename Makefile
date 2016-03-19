@@ -9,7 +9,7 @@ NODE_MODULES_DIR = node_modules
         -v "$$HOME/.ssh":/root/.ssh \
         -w /usr/src/app \
         --name $(NAME) \
-        docker-tinycore-node
+        iegik/docker-node
     SH = sh -c "trap exit TERM;"
 #endif
 
