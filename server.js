@@ -20,7 +20,16 @@ var path = require('path'),
         oldSpawn = childProcess.spawn;
     function mySpawn() {
         fs.readFile('./.brackets/state.json', 'utf8', function (err, data) {
-            if (err) throw err;
+            if (err) {
+                throw err;
+            }
+            state = JSON.parse(data);
+        });
+        state["brackets-git.currentGitRoot"] = state.projectPath;
+        fs.writeFile('./.brackets/state.json', JSON.stringify(state), 'utf8', function (err, data) {
+            if (err) {
+                throw err;
+            }
             state = JSON.parse(data);
         });
         arguments[2] = {cwd:path.join(__dirname, '../', state.projectPath)};
