@@ -13,3 +13,6 @@
 [submodule ".brackets/extensions/user/gruehle.exclude-folders"]
 	path = .brackets/extensions/user/gruehle.exclude-folders
 	url = git@github.com:gruehle/exclude-folders.git
+[submodule ".brackets/extensions/user/brackets-editorconfig"]
+	path = .brackets/extensions/user/brackets-editorconfig
+	url = git@github.com:kidwm/brackets-editorconfig.git

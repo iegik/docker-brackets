@@ -30,5 +30,6 @@
     "brackets-git.terminalCommand": null,
     "brackets-git.terminalCommandArgs": null,
     "brackets-git.debugMode": false,
-    "useTabChar": true
+    "useTabChar": true,
+    "brackets-editorconfig.enabled": true
 }
