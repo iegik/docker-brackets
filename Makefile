@@ -11,7 +11,9 @@ NODE_MODULES_DIR = node_modules
 		-p 3000:3000 \
 		-v "$(CURDIR)":/usr/src/app \
 		-v "$$HOME/Development":/usr/src/projects \
-		-v "$$HOME/.ssh":/root/.ssh \
+		-v "$$HOME/.ssh/known_hosts":/root/.ssh/known_hosts \
+        -v $SSH_AUTH_SOCK:/tmp/ssh_agent \
+        -e SSH_AUTH_SOCK=/tmp/ssh_agent \
 		-w /usr/src/app \
 		--name $(NAME) \
 		iegik/docker-node
@@ -19,7 +21,6 @@ NODE_MODULES_DIR = node_modules
 	DOCKER_RUN = docker exec -it \
 		$(NAME) \
 
-	SH = sh -c "trap exit TERM;"
 #endif
 
 help:
@@ -32,18 +33,19 @@ help:
 
 $(NODE_MODULES_DIR): package.json
 	@$(DOCKER_NPM) \
-		$(SH)"npm install --unsafe-perm"
+		npm install --unsafe-perm
 
 dep: $(NODE_MODULES_DIR)
 
 build: dep
 	@$(DOCKER_APP) \
-		$(SH)"npm start $(ARGS)"
+		npm start $(ARGS)
 
 run\:%:
 	@$(DOCKER_RUN) \
-		$(SH)"$(subst run:,,$@) $(ARGS)"
+		$(subst run:,,$@) $(ARGS)
 
 clean:
-	@docker rm -f $(NAME) && $(DOCKER_NPM) \
-		$(SH)"rm -rf $(NODE_MODULES_DIR) brackets*"
+	@docker \
+		rm -f $(NAME) && $(DOCKER_NPM) \
+		rm -rf $(NODE_MODULES_DIR) brackets*
