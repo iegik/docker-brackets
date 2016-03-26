@@ -12,7 +12,7 @@ NODE_MODULES_DIR = node_modules
 		-v "$(CURDIR)":/usr/src/app \
 		-v "$$HOME/Development":/usr/src/projects \
 		-v "$$HOME/.ssh/known_hosts":/root/.ssh/known_hosts \
-		-v $SSH_AUTH_SOCK:/tmp/ssh_agent \
+		-v $(SSH_AUTH_SOCK):/tmp/ssh_agent \
 		-e SSH_AUTH_SOCK=/tmp/ssh_agent \
 		-w /usr/src/app \
 		--name $(NAME) \
